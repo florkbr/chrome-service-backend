@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=./widget-schema.json
+
+name: landingPageItless
+displayName: LandingPageItless
+templateConfig:
+  sm:
+    - x: 0
+      y: 0
+      i: 'rhel#rhel'
+      w: 1
+      h: 4
+      maxH: 10
+      minH: 1
+  md:
+    - x: 0
+      y: 0
+      i: 'rhel#rhel'
+      w: 1
+      h: 4
+      maxH: 10
+      minH: 1
+  lg:
+    - x: 0
+      y: 0
+      i: 'rhel#rhel'
+      w: 1
+      h: 4
+      maxH: 10
+      minH: 1
+  xl:
+    - x: 0
+      y: 0
+      i: 'rhel#rhel'
+      w: 1
+      h: 4
+      maxH: 10
+      minH: 1

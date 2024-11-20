@@ -16,7 +16,8 @@ import (
 type AvailableTemplates string
 
 const (
-	LandingPage AvailableTemplates = "landingPage"
+	LandingPage       AvailableTemplates = "landingPage"
+	LandingPageItless AvailableTemplates = "landingPageItless"
 )
 
 func (at *AvailableTemplates) Scan(value interface{}) error {
@@ -35,6 +36,16 @@ func (at AvailableTemplates) String() string {
 func (at AvailableTemplates) IsValid() error {
 	switch at {
 	case LandingPage:
+		// feature flag indicating itless enabled
+		if true {
+			return fmt.Errorf("invalid dashboard template. Expected one of %s, got %s", LandingPageItless, at)
+		}
+		return nil
+	case LandingPageItless:
+		// feature flag indicating itless disabled
+		if true {
+			return fmt.Errorf("invalid dashboard template. Expected one of %s, got %s", LandingPage, at)
+		}
 		return nil
 	}
 
@@ -58,7 +69,7 @@ const (
 	Acs                 AvailableWidgets = "acs"
 	Subscriptions       AvailableWidgets = "subscriptions"
 	SupportCases        AvailableWidgets = "supportCases"
-	Integrations		AvailableWidgets = "integrations"
+	Integrations        AvailableWidgets = "integrations"
 )
 
 func (aw AvailableWidgets) IsValid() error {
@@ -311,7 +322,7 @@ const (
 	ACSIcon              WidgetIcons = "ACSIcon"
 	OpenShiftAiIcon      WidgetIcons = "OpenShiftAiIcon"
 	HeadsetIcon          WidgetIcons = "HeadsetIcon"
-	IntegrationsIcon	 WidgetIcons = "IntegrationsIcon"
+	IntegrationsIcon     WidgetIcons = "IntegrationsIcon"
 )
 
 func (wi WidgetIcons) IsValid() error {
@@ -350,12 +361,12 @@ type WidgetConfiguration struct {
 }
 
 type ModuleFederationMetadata struct {
-	Scope      string               `json:"scope"`
-	Module     string               `json:"module"`
-	ImportName string               `json:"importName,omitempty"`
-	FeatureFlag string              `json:"featureFlag,omitempty"`
-	Defaults   BaseWidgetDimensions `json:"defaults"`
-	Config     WidgetConfiguration  `json:"config"`
+	Scope       string               `json:"scope"`
+	Module      string               `json:"module"`
+	ImportName  string               `json:"importName,omitempty"`
+	FeatureFlag string               `json:"featureFlag,omitempty"`
+	Defaults    BaseWidgetDimensions `json:"defaults"`
+	Config      WidgetConfiguration  `json:"config"`
 }
 
 type WidgetModuleFederationMapping map[AvailableWidgets]ModuleFederationMetadata
